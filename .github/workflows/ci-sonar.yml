@@ -36,10 +36,10 @@ jobs:
      - name: Install jest-junit
        run:  npm i --save-dev jest-junit
      - name: Run unit tests with coverage and JUnit reports
-       run: |
+       env:
         JEST_JUNIT_OUTPUT_DIR=coverage
         JEST_JUNIT_OUTPUT_NAME=junit.xml
-        npm run test:coverage -- --reporters=jest-junit
+       run: npm run test:coverage -- --reporters=jest-junit
 
      - name: Publish test results to Checks
        uses: dorny/test-reporter@v1
